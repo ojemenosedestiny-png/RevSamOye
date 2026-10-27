@@ -1,9 +1,12 @@
 "use client";
 
 import { AnimatePresence, motion } from "framer-motion";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { site } from "@/lib/content";
 import { setScrollLocked } from "./Providers";
+import { ThemeToggle } from "./ui/ThemeToggle";
 import { Icon } from "./ui/Icon";
 
 export function Navbar() {
@@ -12,6 +15,11 @@ export function Navbar() {
   const [active, setActive] = useState("");
   const firstLink = useRef<HTMLAnchorElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
+  // Section anchors only exist on the home page; from other pages they go back to it
+  const to = (href: string) => (href.startsWith("#") && !isHome ? `/${href}` : href);
+  const isActive = (href: string) => (href.startsWith("#") ? active === href : pathname.startsWith(href));
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -22,14 +30,18 @@ export function Navbar() {
 
   // Highlight the section currently in view
   useEffect(() => {
-    const sections = site.nav.map((n) => document.querySelector(n.href)).filter(Boolean) as Element[];
+    if (!isHome) return;
+    const sections = site.nav
+      .filter((n) => n.href.startsWith("#"))
+      .map((n) => document.querySelector(n.href))
+      .filter(Boolean) as Element[];
     const io = new IntersectionObserver(
       (entries) => entries.forEach((e) => e.isIntersecting && setActive(`#${e.target.id}`)),
       { rootMargin: "-45% 0px -50% 0px" },
     );
     sections.forEach((s) => io.observe(s));
     return () => io.disconnect();
-  }, []);
+  }, [isHome]);
 
   useEffect(() => {
     setScrollLocked(open);
@@ -52,37 +64,38 @@ export function Navbar() {
         }`}
       >
         <nav className="container flex items-center justify-between gap-6" aria-label="Main">
-          <a href="#top" className="group flex items-center gap-3" aria-label={`${site.name} — back to top`}>
+          <Link href={isHome ? "#top" : "/"} className="group flex items-center gap-3" aria-label={`${site.name} — back to top`}>
             <span className="grid h-10 w-10 place-items-center rounded-full border border-gold/50 font-serif text-lg italic text-gold-bright transition-colors group-hover:bg-gold/10">
               SO
             </span>
             <span className="font-serif text-xl tracking-wide text-ivory">{site.name}</span>
-          </a>
+          </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {site.nav.map((item) => (
               <li key={item.href}>
-                <a
-                  href={item.href}
-                  aria-current={active === item.href ? "true" : undefined}
+                <Link
+                  href={to(item.href)}
+                  aria-current={isActive(item.href) ? (item.href.startsWith("#") ? "true" : "page") : undefined}
                   className={`relative rounded-full px-4 py-2 text-sm font-medium transition-colors hover:text-ivory ${
-                    active === item.href ? "text-ivory" : "text-muted"
+                    isActive(item.href) ? "text-ivory" : "text-muted"
                   }`}
                 >
                   {item.label}
-                  {active === item.href && (
+                  {isActive(item.href) && (
                     <motion.span layoutId="nav-dot" className="absolute inset-x-4 -bottom-0.5 h-px bg-gold" />
                   )}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
 
-          <div className="flex items-center gap-3">
-            <a href="#app" className="btn-primary hidden !min-h-[42px] !px-5 text-sm sm:inline-flex">
+          <div className="flex items-center gap-2 sm:gap-3">
+            <ThemeToggle />
+            <Link href={to("#app")} className="btn-primary hidden !min-h-[42px] !px-5 text-sm sm:inline-flex">
               <Icon name="download" className="h-4 w-4" />
               Download the App
-            </a>
+            </Link>
             <button
               ref={toggle}
               type="button"
@@ -124,22 +137,22 @@ export function Navbar() {
                   key={item.href}
                   variants={{ hidden: { opacity: 0, y: 30 }, show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } } }}
                 >
-                  <a
+                  <Link
                     ref={i === 0 ? firstLink : undefined}
-                    href={item.href}
+                    href={to(item.href)}
                     onClick={() => setOpen(false)}
                     className="flex items-baseline gap-4 border-b border-ivory/10 py-4 font-serif text-4xl text-ivory"
                   >
                     <span className="font-sans text-xs tracking-widest text-gold">0{i + 1}</span>
                     {item.label}
-                  </a>
+                  </Link>
                 </motion.li>
               ))}
             </motion.ul>
-            <a href="#app" onClick={() => setOpen(false)} className="btn-primary relative mt-auto">
+            <Link href={to("#app")} onClick={() => setOpen(false)} className="btn-primary relative mt-auto">
               <Icon name="download" className="h-4 w-4" />
               Download the App
-            </a>
+            </Link>
           </motion.div>
         )}
       </AnimatePresence>

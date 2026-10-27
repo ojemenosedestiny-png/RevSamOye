@@ -15,6 +15,9 @@ const config: Config = {
         gold: { DEFAULT: token("gold"), bright: token("gold-bright"), deep: token("gold-deep") },
         ivory: token("ivory"),
         muted: token("muted"),
+        danger: token("danger"),
+        "on-gold": token("on-gold"),
+        overlay: token("overlay"),
       },
       fontFamily: {
         serif: ["var(--font-serif)", "Georgia", "serif"],
@@ -30,7 +33,7 @@ const config: Config = {
       borderRadius: { card: "var(--radius-card)" },
       boxShadow: {
         glow: "var(--shadow-glow)",
-        card: "0 30px 60px -30px rgb(0 0 0 / 0.6)",
+        card: "var(--shadow-card)",
       },
       transitionTimingFunction: { out: "var(--ease-out)" },
       maxWidth: { prose: "62ch" },

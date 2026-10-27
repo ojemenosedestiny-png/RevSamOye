@@ -54,7 +54,7 @@ export async function AppDownload() {
               ].map(([label, svg]) => (
                 <figure key={label} className="flex items-center gap-4 rounded-2xl border border-ivory/10 bg-ink/40 p-3 pr-5">
                   <div
-                    className="h-24 w-24 rounded-xl bg-ivory p-2.5 [&_svg]:h-full [&_svg]:w-full"
+                    className="h-24 w-24 rounded-xl bg-white p-2.5 [&_svg]:h-full [&_svg]:w-full"
                     role="img"
                     aria-label={`QR code to download Sam Oye Global on ${label}`}
                     dangerouslySetInnerHTML={{ __html: svg }}

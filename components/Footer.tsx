@@ -3,7 +3,9 @@ import { Icon, type IconName } from "./ui/Icon";
 import { PlaceholderTag } from "./ui/SectionHeading";
 import { StoreBadges } from "./ui/StoreBadges";
 
-export function Footer() {
+/** `home` is false on inner pages, where section anchors must lead back to the home page. */
+export function Footer({ home = true }: { home?: boolean }) {
+  const to = (href: string) => (href.startsWith("#") && !home ? `/${href}` : href);
   const year = new Date().getFullYear();
   const { contact } = site;
   const pending = (field: string) => (contact.placeholderFields as string[]).includes(field);
@@ -15,19 +17,19 @@ export function Footer() {
       </h2>
       <div className="container grid gap-12 pb-16 md:grid-cols-2 lg:grid-cols-12">
         <div className="lg:col-span-4">
-          <a href="#top" className="flex items-center gap-3">
+          <a href={home ? "#top" : "/"} className="flex items-center gap-3">
             <span className="grid h-11 w-11 place-items-center rounded-full border border-gold/50 font-serif text-lg italic text-gold-bright">SO</span>
             <span className="font-serif text-2xl text-ivory">{site.name}</span>
           </a>
           <p className="mt-5 max-w-xs leading-relaxed text-muted">{site.tagline}</p>
           <ul className="mt-6 flex gap-3">
-            {site.socials.map((s) => (
+            {site.socials.filter((s) => s.url.startsWith("http")).map((s) => (
               <li key={s.name}>
                 <a
                   href={s.url}
-                  target={s.url.startsWith("http") ? "_blank" : undefined}
+                  target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={`${s.name}${"placeholder" in s && s.placeholder ? " (link coming soon)" : ""}`}
+                  aria-label={s.name}
                   className="grid h-11 w-11 place-items-center rounded-full border border-ivory/15 text-ivory/80 transition-colors hover:border-gold hover:text-gold"
                 >
                   <Icon name={s.icon as IconName} className="h-[18px] w-[18px]" />
@@ -42,7 +44,7 @@ export function Footer() {
           <ul className="mt-5 space-y-3">
             {site.nav.map((n) => (
               <li key={n.href}>
-                <a href={n.href} className="text-muted transition-colors hover:text-ivory">
+                <a href={to(n.href)} className="text-muted transition-colors hover:text-ivory">
                   {n.label}
                 </a>
               </li>

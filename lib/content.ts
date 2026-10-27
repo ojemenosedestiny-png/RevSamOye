@@ -13,7 +13,20 @@ export type MinistryArm = (typeof ministry.arms)[number];
 export type StatsData = typeof stats;
 export type VideoData = typeof video;
 export type TestimoniesData = typeof testimonies;
-export type Book = (typeof books.books)[number];
+export type Book = {
+  id: string;
+  title: string;
+  subtitle: string;
+  category: string;
+  cover: string;
+  gumroad: string;
+  store: string;
+  amazon: string;
+  featured?: boolean;
+  about?: string[];
+  highlights?: string[];
+  closing?: string[];
+};
 
 export type EventItem = {
   id: string;
@@ -41,6 +54,15 @@ export function upcomingEvents(list: EventItem[] = events, now: Date = new Date(
   return list
     .filter((e) => new Date(e.end ?? e.start).getTime() > now.getTime())
     .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
+}
+
+export const bookList = books.books as Book[];
+export const getBook = (id: string) => bookList.find((b) => b.id === id);
+
+/** Up to `n` other books, same topic first. */
+export function relatedBooks(book: Book, n = 4): Book[] {
+  const others = bookList.filter((b) => b.id !== book.id);
+  return [...others.filter((b) => b.category === book.category), ...others.filter((b) => b.category !== book.category)].slice(0, n);
 }
 
 export { site, bio, ministry, stats, video, testimonies, books };

@@ -140,7 +140,7 @@ export function Events({ initial }: { initial: EventItem[] }) {
               <article className="card grid gap-8 p-7 md:p-10 lg:grid-cols-2 lg:gap-14" aria-labelledby={`ev-${next.id}`}>
                 <div>
                   <div className="flex flex-wrap items-center gap-3">
-                    <span className="rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-ink">Next event</span>
+                    <span className="rounded-full bg-gold px-3 py-1 text-xs font-bold uppercase tracking-[0.16em] text-on-gold">Next event</span>
                     {next.placeholder && <PlaceholderTag />}
                   </div>
                   <h3 id={`ev-${next.id}`} className="mt-6 text-4xl md:text-5xl">

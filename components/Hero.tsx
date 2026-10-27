@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, type CSSProperties } from "react";
 import { bio } from "@/lib/content";
 import { KineticHeadline } from "./hero/KineticHeadline";
 import { Particles } from "./hero/Particles";
@@ -10,12 +10,9 @@ import { RotatingWords } from "./hero/RotatingWords";
 import { Icon } from "./ui/Icon";
 import { MagneticButton } from "./ui/MagneticButton";
 
-const EASE = [0.16, 1, 0.3, 1] as const;
-const fadeUp = (delay: number) => ({
-  initial: { opacity: 0, y: 24 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 1, ease: EASE, delay },
-});
+// Entrance animations are CSS (.rise / .portrait-in in globals.css) so the hero is visible on
+// first paint; --d staggers them. Framer Motion only drives the scroll parallax.
+const rise = (d: number) => ({ className: "rise", style: { "--d": `${d}s` } as CSSProperties });
 
 export function Hero({ portrait }: { portrait: { src: string; alt: string } }) {
   const ref = useRef<HTMLElement>(null);
@@ -34,9 +31,10 @@ export function Hero({ portrait }: { portrait: { src: string; alt: string } }) {
 
       <div className="container grid items-center gap-14 lg:grid-cols-12 lg:gap-10">
         <motion.div style={{ y: textY }} className="lg:col-span-7">
-          <motion.p {...fadeUp(0.1)} className="eyebrow">
-            {bio.role} · {bio.location}
-          </motion.p>
+          <p {...rise(0)}>
+            <span className="eyebrow">
+            {bio.role} · {bio.location}</span>
+          </p>
 
           <KineticHeadline
             text="Raising Transformed Lives for Global Impact"
@@ -44,16 +42,19 @@ export function Hero({ portrait }: { portrait: { src: string; alt: string } }) {
             className="mt-7 text-display-xl"
           />
 
-          <motion.p {...fadeUp(1.6)} className="mt-8 flex flex-wrap items-baseline gap-x-3 text-lg text-muted md:text-xl">
+          <div {...rise(0.55)}>
+          <p className="mt-8 flex flex-wrap items-baseline gap-x-3 text-lg text-muted md:text-xl">
             <span>Teaching on</span>
             <RotatingWords words={["Leadership", "Relationships", "Faith", "Purpose", "Transformation"]} />
-          </motion.p>
+          </p>
 
-          <motion.p {...fadeUp(1.75)} className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted">
             Founder &amp; Lead Pastor of The Transforming Church, Abuja, and Convener of Prophetic Prayer Hour.
-          </motion.p>
+          </p>
+          </div>
 
-          <motion.div {...fadeUp(1.9)} className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
+          <div {...rise(0.7)}>
+          <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
             <MagneticButton href="#counseling">
               Book a Counseling Session
               <Icon name="arrowRight" className="h-4 w-4" />
@@ -64,16 +65,12 @@ export function Hero({ portrait }: { portrait: { src: string; alt: string } }) {
               </span>
               Watch Message
             </MagneticButton>
-          </motion.div>
+          </div>
+          </div>
         </motion.div>
 
         {/* Portrait with parallax */}
-        <motion.div
-          className="relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none"
-          initial={{ opacity: 0, scale: 0.94, filter: "blur(10px)" }}
-          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-          transition={{ duration: 1.6, ease: EASE, delay: 0.4 }}
-        >
+        <div className="portrait-in relative mx-auto w-full max-w-md lg:col-span-5 lg:max-w-none">
           <div className="absolute -inset-6 rounded-[2.5rem] bg-[conic-gradient(from_140deg,transparent,rgb(var(--c-gold)/0.35),transparent_40%)] blur-2xl" aria-hidden="true" />
           <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-gold/25 shadow-glow">
             <motion.div style={{ y: portraitY }} className="absolute -inset-y-[10%] inset-x-0">
@@ -100,7 +97,7 @@ export function Hero({ portrait }: { portrait: { src: string; alt: string } }) {
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
       </div>
 
       <a

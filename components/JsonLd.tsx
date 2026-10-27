@@ -33,7 +33,7 @@ export function JsonLd({ events }: { events: EventItem[] }) {
       author: { "@id": `${siteUrl}/#person` },
       image: `${siteUrl}${b.cover}`,
       bookFormat: "https://schema.org/EBook",
-      url: b.gumroad,
+      url: `${siteUrl}/books/${b.id}`,
     })),
     { ...church, founder: { "@id": `${siteUrl}/#person` }, url: siteUrl },
     ...events

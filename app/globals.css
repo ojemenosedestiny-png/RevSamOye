@@ -19,7 +19,29 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --nav-h: 76px;
 
+  --c-danger: 244 173 166;      /* form errors */
+  --c-on-gold: 6 9 20;          /* text on gold buttons — dark in both themes */
+  --c-overlay: 6 9 20;          /* photo shading — always dark so white captions stay readable */
+  --shadow-card: 0 30px 60px -30px rgb(0 0 0 / 0.6);
+
   color-scheme: dark;
+}
+
+/* Light theme: warm ivory paper, navy ink, deeper gold for contrast. Set by the inline
+   script in app/layout.tsx (saved choice, else the device setting). */
+:root[data-theme="light"] {
+  --c-ink: 250 247 240;         /* page background              #FAF7F0 */
+  --c-navy: 255 255 255;        /* raised surfaces              #FFFFFF */
+  --c-navy-2: 236 229 214;      /* highest surface / borders    #ECE5D6 */
+  --c-gold: 166 126 48;         /* accent (AA on ivory for large text) #A67E30 */
+  --c-gold-bright: 140 103 32;  /* gold text                    #8C6720 */
+  --c-gold-deep: 112 82 24;     /*                              #705218 */
+  --c-ivory: 14 22 44;          /* primary text                 #0E162C */
+  --c-muted: 82 88 104;         /* secondary text (AA)          #525868 */
+  --c-danger: 176 42 32;
+  --shadow-glow: 0 0 80px -24px rgb(var(--c-gold) / 0.35);
+  --shadow-card: 0 24px 50px -28px rgb(14 22 44 / 0.25);
+  color-scheme: light;
 }
 
 /* ─────────────────────────  Base  ───────────────────────── */
@@ -55,11 +77,47 @@ html.lenis, html.lenis body { height: auto; }
 .lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-stopped { overflow: hidden; }
 
-/* Kinetic letters are hidden only once JS has flagged <html class="js">,
-   so the headline is never lost if scripts fail. */
-.js .kinetic-char { opacity: 0; }
+/* Hero entrance — pure CSS so it starts on first paint, before any JavaScript loads. */
+@keyframes kinetic-in {
+  from { opacity: 0; transform: translateY(0.45em); filter: blur(6px); }
+  to   { opacity: 1; transform: none; filter: none; }
+}
+@keyframes underline-draw { to { stroke-dashoffset: 0; } }
+@keyframes rise-in {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@keyframes portrait-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to   { opacity: 1; transform: none; }
+}
+.kinetic-char {
+  animation: kinetic-in 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: calc(var(--i, 0) * 16ms);
+}
+.kinetic-underline {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: underline-draw 0.9s cubic-bezier(0.65, 0, 0.35, 1) 0.85s forwards;
+}
+.rise { animation: rise-in 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; animation-delay: var(--d, 0s); }
+.portrait-in { animation: portrait-in 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both; }
 @media (prefers-reduced-motion: reduce) {
-  .js .kinetic-char { opacity: 1; }
+  .kinetic-char, .rise, .portrait-in { animation: none; }
+  .kinetic-underline { animation: none; stroke-dashoffset: 0; }
+}
+
+/* Gold particles read as specks of dust on the light background; the observer pauses them while hidden */
+:root[data-theme="light"] .hero-particles { display: none; }
+
+/* Toggle shows the sun in dark mode (switch to light) and the moon in light mode */
+.theme-icon-dark { display: none; }
+:root[data-theme="light"] .theme-icon-light { display: none; }
+:root[data-theme="light"] .theme-icon-dark { display: block; }
+
+/* Theme switch: briefly animate colours when the visitor toggles, never on load. */
+html.theme-fade, html.theme-fade * {
+  transition: background-color 0.35s ease, border-color 0.35s ease, color 0.35s ease, fill 0.35s ease !important;
 }
 
 /* ─────────────────────────  Components  ───────────────────────── */
@@ -110,7 +168,7 @@ html.lenis, html.lenis body { height: auto; }
     @apply relative inline-flex min-h-[48px] items-center justify-center gap-2.5 rounded-full px-7 text-[0.95rem] font-semibold tracking-wide transition-[background,color,box-shadow,border-color] duration-300 ease-out disabled:cursor-not-allowed disabled:opacity-50;
   }
   .btn-primary {
-    @apply btn text-ink;
+    @apply btn text-on-gold;
     background: linear-gradient(135deg, rgb(var(--c-gold-bright)), rgb(var(--c-gold)) 55%, rgb(var(--c-gold-deep)));
     box-shadow: 0 10px 30px -10px rgb(var(--c-gold) / 0.6), inset 0 1px 0 rgb(255 255 255 / 0.35);
   }
@@ -128,7 +186,7 @@ html.lenis, html.lenis body { height: auto; }
     @apply block w-full rounded-xl border border-ivory/15 bg-ink/60 px-4 py-3.5 text-base text-ivory transition-colors duration-200 placeholder:text-muted/60 hover:border-ivory/25 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30;
   }
   .label { @apply mb-2 block text-sm font-medium text-ivory/90; }
-  .field-error { @apply mt-1.5 text-sm text-[#F4ADA6]; }
+  .field-error { @apply mt-1.5 text-sm text-danger; }
 
   /* Visible marker for unconfirmed content */
   .placeholder-tag {

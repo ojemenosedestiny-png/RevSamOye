@@ -75,7 +75,7 @@ Use only official ministry photos.
 | About portrait | `public/images/pastor-ministering.jpg`, also enlarged from a small original. Swap it by changing `aboutPortrait.src` in `bio.json` |
 | Intro video | `public/videos/intro.mp4`. Use H.264, ideally 15 MB or less, 30–90 seconds |
 | Video poster | e.g. `public/images/video-poster.jpg`, then set `poster` in `video.json` |
-| Captions | `public/videos/intro.en.vtt` (WebVTT) |
+| Captions | Optional WebVTT (.vtt) file — upload it in the admin panel, or set `captions` in `video.json` |
 | YouTube fallback | Set `youtubeUrl` in `video.json`. It's used if the MP4 is missing, or always if `preferYouTube` is `true` |
 | App screenshot | The phone in the App section is a CSS illustration. You can swap it for a real screenshot in `components/PhoneMockup.tsx` |
 

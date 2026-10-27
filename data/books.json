@@ -1,12 +1,26 @@
 {
-  "_note": "Titles, subtitles and covers come from the ministry's own stores: samoyelistens.gumroad.com and samoyeglobal.org/store (checked 27 Oct 2026). Covers are saved in /public/images/books — not hotlinked. Leave \"amazon\" empty until a real Amazon listing is confirmed; the button appears automatically once a link is added.",
+  "_note": "Titles, subtitles and covers come from the ministry's own stores: samoyelistens.gumroad.com and samoyeglobal.org/store (checked 27 Oct 2026). Covers are saved in /public/images/books — not hotlinked. Leave \"amazon\" empty until a real Amazon listing is confirmed; the button appears automatically once a link is added. Book descriptions (about, highlights, closing) are the publisher's own words from the Gumroad product pages.",
   "storefronts": [
-    { "name": "Official bookstore", "url": "https://samoyeglobal.org/store" },
-    { "name": "Gumroad", "url": "https://samoyelistens.gumroad.com" },
-    { "name": "Selar", "url": "https://selar.com/m/dr-sam-oye1" }
+    {
+      "name": "Official bookstore",
+      "url": "https://samoyeglobal.org/store"
+    },
+    {
+      "name": "Gumroad",
+      "url": "https://samoyelistens.gumroad.com"
+    },
+    {
+      "name": "Selar",
+      "url": "https://selar.com/m/dr-sam-oye1"
+    }
   ],
   "amazonAuthorUrl": "",
-  "categories": ["Marriage & Relationships", "Singles", "Leadership & Ministry", "Personal Growth"],
+  "categories": [
+    "Marriage & Relationships",
+    "Singles",
+    "Leadership & Ministry",
+    "Personal Growth"
+  ],
   "books": [
     {
       "id": "mind-your-mind",
@@ -17,7 +31,21 @@
       "gumroad": "https://samoyelistens.gumroad.com/l/Mind-Your-Mind",
       "store": "https://samoyeglobal.org/store/mind-your-mind-1775730153907717820",
       "amazon": "",
-      "featured": true
+      "featured": true,
+      "about": [
+        "Struggling with overthinking, anxiety, or lack of clarity? Your greatest battle is not around you it is within you.",
+        "MIND YOUR MIND is a practical, Bible-based guide to mastering your thoughts, controlling your emotions, and aligning your life with truth for lasting stability and success. In a world filled with pressure, distraction, and mental overload, your ability to manage your mind determines your ability to win."
+      ],
+      "highlights": [
+        "Break negative thinking patterns",
+        "Overcome fear and emotional instability",
+        "Build focus, faith, and mental resilience",
+        "Align your thoughts for clarity and direction"
+      ],
+      "closing": [
+        "This is not just a motivational book — it is a transformational manual.",
+        "Your thoughts shape your life. Your mind directs your future. Master your mind, and you will master your life."
+      ]
     },
     {
       "id": "yesterday-can-kill",
@@ -27,7 +55,14 @@
       "cover": "/images/books/yesterday-can-kill.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/YesterdayCanKill",
       "store": "https://samoyeglobal.org/store/yesterday-can-kill-1775730053452734237",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "What if you’re not stuck because life is hard but because you’re still carrying yesterday? You’re moving forward physically, but emotionally tied to past pain, mistakes, and patterns and it’s costing you your peace, confidence, and progress.",
+        "Yesterday Can Kill is a practical, faith-based guide to help you let go, heal, and break free from cycles holding you back. In this book, you’ll learn how to release the past, renew your mind, rebuild your confidence, and step boldly into your future."
+      ],
+      "closing": [
+        "You can’t carry yesterday into the life you’re praying for. Your past is over. Your moment is now. Your future is calling. It’s time to let go and step forward."
+      ]
     },
     {
       "id": "overcoming-emotional-divorce",
@@ -37,7 +72,24 @@
       "cover": "/images/books/overcoming-emotional-divorce.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/OVERCOMINGEMOTIONALDIVORCE",
       "store": "",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "Many marriages do not end with divorce papers they end long before, when husbands and wives become emotionally disconnected while continuing to live under the same roof.",
+        "In Overcoming Emotional Divorce, Rev. Dr. Sam Oye reveals the hidden causes of emotional disconnection and provides a practical, biblical, and research-informed roadmap for restoring love, trust, friendship, communication, and intimacy."
+      ],
+      "highlights": [
+        "Recognize the early warning signs of emotional divorce.",
+        "Understand the unique emotional needs of husbands and wives.",
+        "Break destructive relationship patterns.",
+        "Resolve conflict in healthy ways.",
+        "Rebuild emotional safety, respect, affection, and trust.",
+        "Restore spiritual and emotional intimacy.",
+        "Strengthen your marriage through practical assessments, reflection questions, and proven restoration exercises."
+      ],
+      "closing": [
+        "Whether you are struggling in your marriage, preparing for marriage, or helping other couples as a pastor, counselor, or coach, this book offers life-changing insights and practical tools to help you move from emotional distance to lasting connection.",
+        "Your marriage can heal. Your friendship can return. Your love can live again."
+      ]
     },
     {
       "id": "becoming-a-power-couple",
@@ -47,7 +99,12 @@
       "cover": "/images/books/becoming-a-power-couple.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/Become-A-Power-Couple",
       "store": "https://samoyeglobal.org/store/become-a-power-couple-1775728370780081631",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "Because marriage was never meant to be two sincere people managing survival. It was designed to be two aligned people multiplying strength. God’s original intention was never weakness producing weaker results—it was unity producing power. Two were meant to be better than one, not just emotionally, but spiritually, strategically, and generationally.",
+        "Many couples love each other deeply but lack the structure, understanding, and alignment to unlock their full potential. This book gives you that blueprint. Across 3 strategic sections, 22 transformative chapters, and 462 pages of practical insight, it walks you through the mysteries of oneness, the principles that build powerful partnership, and the hidden forces that silently weaken marriages.",
+        "It will inform you with clarity, inspire you with vision, and influence you to reposition your marriage for greater success. If you want more than coexistence… if you desire alignment, impact, and legacy… if you believe your union carries more than it is currently expressing—then this book is for you. Because you were never joined to simply stay married. You were joined to become powerful—together."
+      ]
     },
     {
       "id": "breaking-negative-relationship-patterns",
@@ -57,7 +114,11 @@
       "cover": "/images/books/breaking-negative-relationship-patterns.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/BREAKING-NEGATIVE-RELATIONSHIP-PATTERNS",
       "store": "https://samoyeglobal.org/store/breaking-negative-relationship-patterns-1775729039731702193",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "Breaking Negative Relationship Patterns is a practical and spiritually grounded guide that helps individuals and couples identify and overcome the repeated behaviors that quietly damage relationships and marriages. It addresses destructive cycles such as invalidation, misinterpretation, escalation, indifference, self-centeredness, detachment, abuse, and irresponsibility—patterns that shape outcomes over time.",
+        "With biblical insight, clear diagnosis, and actionable steps, Dr. Sam Oye equips readers to move from blame to accountability, from repetition to renewal. This book is a roadmap for breaking unhealthy cycles and building relationships rooted in love, trust, emotional maturity, and lasting transformation."
+      ]
     },
     {
       "id": "the-singles-checklist",
@@ -67,7 +128,12 @@
       "cover": "/images/books/the-singles-checklist.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/THE-SINGLES-CHECKLIST",
       "store": "https://samoyeglobal.org/store/the-singles-checklist-90-1775729612264044517",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "You cannot afford to gamble with your destiny in the name of love. Marriage is too sacred, your future too valuable, and your emotional health too important to leave to assumptions, pressure, or mere attraction. The Singles Checklist 9.0 is your intentional guide to investigating before investing your life. It moves you beyond surface feelings into deep evaluation, spiritual discernment, and practical wisdom. This book is not designed to create fear; it is designed to build clarity. It equips you to slow down, think deeply, pray intentionally, and choose wisely before you say, “I Do.”",
+        "Inside these pages, you will walk through the Purpose Connection Check, ensuring your visions and callings align rather than compete. You will explore the Family Background Check, uncovering patterns, values, and generational influences that shape behavior. The Integrity Check and Personality Check help you evaluate character, emotional stability, compatibility, and conflict management. The Responsibility Check examines maturity and readiness for commitment, while the Parental Consent Check emphasizes honor, counsel, and covering. Through the Health Check, you assess physical, emotional, and mental well-being. The Love Check tests whether what you share is patient, kind, sacrificial, and reciprocal. Finally, the Divine Confirmation Check ensures that beyond logic and emotion, you have spiritual peace and conviction about your choice.",
+        "This is more than a checklist; it is a compass. It helps you increase your capacity to attract wisely, discern accurately, and determine who truly qualifies for the lifelong investment of your heart, time, and resources. If you are serious about building a relationship that will not collapse under pressure, then The Singles Checklist 9.0 is not optional—it is essential."
+      ]
     },
     {
       "id": "the-singles-compass",
@@ -77,7 +143,25 @@
       "cover": "/images/books/the-singles-compass.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/THE-SINGLES-COMPASS",
       "store": "https://samoyeglobal.org/store/the-singles-compass-1775729711122795554",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "You need direction. Speed without direction leads to frustration—especially in relationships and marriage.",
+        "You can be emotionally available, spiritually ready, financially stable, and physically present—but if you’re not divinely aligned, you’re still lost. Many singles are moving fast but not forward. They’re navigating love with broken compasses—guided by past pain, cultural pressure, or emotional desperation. The result? Delay. Disappointment. Repetition.",
+        "That’s why The Singles’ Compass exists—for those tired of wandering. It’s not about forcing your way into marriage. It’s about being led—by God, by truth, by clarity. This 31-day devotional is more than encouragement—it’s a prophetic roadmap. Each day unlocks a strategic dimension of breakthrough."
+      ],
+      "highlights": [
+        "You’ll confront your past (Release My Past)",
+        "Realign your walk (Order My Steps)",
+        "Gain divine clarity (Open My Eyes)",
+        "Break emotional chains (Break Soul Ties)",
+        "Shatter spiritual blockages (Tear Down Altars)",
+        "Activate momentum (Supernatural Speed Now)",
+        "Restore your dignity (No More Rejection)",
+        "And build the capacity to sustain what you’re praying for (Strengthen Your Power-Base)"
+      ],
+      "closing": [
+        "This is not a “get married quick” manual. It’s a soul reset. A compass for your heart. A call to intentionality. A summons to wholeness before union."
+      ]
     },
     {
       "id": "the-teens-guide",
@@ -87,7 +171,21 @@
       "cover": "/images/books/the-teens-guide.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/The-Teens-Guide",
       "store": "https://samoyeglobal.org/store/the-teen39s-guide-1775729344520343004",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "The Teens Guide: 31 Days to Identity, Intimacy with God, and Influence is more than a devotional—it is a destiny-defining compass for today’s teenagers and a transformational tool for parents, pastors, teachers, mentors, and youth coaches who guide them.",
+        "This book provides a 31-day life-transforming journey that speaks to the heart of every teen’s struggle, potential, and purpose. In a world full of noise, pressure, and confusion, this guide helps teens:"
+      ],
+      "highlights": [
+        "Discover their true God-given identity and stop comparing themselves with others.",
+        "Develop unshakable intimacy with God, building spiritual disciplines in a practical, relatable way.",
+        "Cultivate character, courage, and confidence to say “no” to peer pressure and “yes” to purpose.",
+        "Ignite the fire of influence, equipping them to make bold, godly impact in their generation.",
+        "Ask and answer the right questions about life, love, sex, friendship, and faith."
+      ],
+      "closing": [
+        "Whether you are a teen, a parent, a youth leader, or a mentor, this devotional is your go-to roadmap for guiding the next generation into clarity, consecration, and kingdom impact. Don’t just give a teen a book—give them a tool to navigate life with purpose, purity, and power."
+      ]
     },
     {
       "id": "just-different",
@@ -97,7 +195,21 @@
       "cover": "/images/books/just-different.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/JUST-DIFFERENT",
       "store": "",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "Most people are trying to be better. Very few have made a decision to be different. And until you understand this, you will keep competing in spaces you were designed to lead.",
+        "Difference is not an accident. It is a decision. “Just Different!” is not a feel-good book. It is a wake-up call.",
+        "In today’s world, average is crowded. Familiar is ignored. Common is replaceable. If you are not different, you will be overlooked."
+      ],
+      "highlights": [
+        "How to embrace your uniqueness without apology",
+        "How to develop a mindset that produces distinction",
+        "Why excellence alone is not enough without identity",
+        "How to position yourself for relevance and impact"
+      ],
+      "closing": [
+        "Stop trying to fit in where you were designed to stand out. Be deliberate. Be aligned. Be JUST DIFFERENT."
+      ]
     },
     {
       "id": "becoming-a-high-impact-leader",
@@ -107,7 +219,12 @@
       "cover": "/images/books/becoming-a-high-impact-leader.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/BECOMING-A-HIGH-IMPACT-LEADER",
       "store": "https://samoyeglobal.org/store/becoming-a-high-impact-leader-1775728603954527417",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "Leadership is no longer about position-it is about impact. In a fast-changing, high-pressure world, visibility without influence is noise, and activity without results is exhaustion. Becoming a High-Impact Leader is a practical, principle-driven blueprint for leaders who refuse to be average, silent, or irrelevant.",
+        "In this powerful book, Dr. Sam Oye unveils 21 indispensable leadership principles that equip you to lead with clarity, conviction, competence, and measurable results in the 21st century. Confronting today’s leadership crisis–where many are busy but ineffective–this book shows you how to increase your leadership capacity, multiply your influence, and create impact that outlives titles and platforms.",
+        "This is not motivational theory. It is leadership transformation. If you are ready to move from leadership effort to leadership effectiveness and from visibility to significance–Becoming a High-Impact Leader is your essential guide."
+      ]
     },
     {
       "id": "emerging-ministers-handbook",
@@ -117,7 +234,12 @@
       "cover": "/images/books/emerging-ministers-handbook.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/MINISTRY-HANDBOOK",
       "store": "https://samoyeglobal.org/store/the-emerging-ministers-ministry-handbook-1775728095770070334",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "IT’S YOUR SEASON TO EMERGE! This is not the time to blend in. This is not the hour to back down. This is your season to break forth.",
+        "THE EMERGING MINISTERS HANDBOOK is not another ministry book—it is a divine wake-up call. Spanning 817 pages, 10 strategic sections, and 61 transformational chapters, this first-of-its-kind manual is designed to help you discover, develop, and deploy your purpose, potential, and platform with clarity and conviction. If you know you were not called to blend in but to shift systems, influence culture, and carry Heaven’s sound into your generation, this book was written with you in mind.",
+        "It will stretch you, sharpen you, and set you on fire. It confronts complacency, dismantles limiting beliefs, and equips you with the spiritual depth, leadership intelligence, Kingdom understanding, and practical structures needed for sustainable 21st-century ministry. This is more than inspiration—it is activation. If you are ready to emerge with focus, power, and impact, this handbook will not just inform you—it will inspire, influence, and transform you."
+      ]
     },
     {
       "id": "the-outpouring",
@@ -127,14 +249,43 @@
       "cover": "/images/books/the-outpouring.jpg",
       "gumroad": "https://samoyelistens.gumroad.com/l/The-Outpouring",
       "store": "https://samoyeglobal.org/store/the-outpouring-1775728826537330937",
-      "amazon": ""
+      "amazon": "",
+      "about": [
+        "Are you sensing it? Something divine, something historic, something supernatural is already stirring across the nations. God is pouring out His Spirit like never before. From underground churches to citywide crusades, from digital pulpits to private prayer closets — there is a global move of the Holy Spirit intensifying in this generation. And it’s only just beginning.",
+        "The Outpouring is not just a book — it’s a clarion call to every hungry soul, every thirsty heart, and every yielded vessel. It is a prophetic invitation to become a participant, not just a spectator, in this greatest spiritual awakening of our time."
+      ],
+      "highlights": [
+        "Discover how to receive the Person of the Holy Spirit, not just His gifts.",
+        "Be equipped to walk in the supernatural power that transforms lives and cities.",
+        "Gain deep spiritual insight from over 30 years of encounter and intimacy with the Holy Spirit.",
+        "Be awakened to your role in the global revival that Heaven is orchestrating.",
+        "Experience a fresh fire, a deeper hunger, and a bold call to consecration."
+      ],
+      "closing": [
+        "You are not holding this book by accident. The Holy Spirit has led you here because He is preparing you — yes, you — to be part of a prophetic company that will carry His presence, demonstrate His power, and release His glory upon the earth. This book is your divine signal. The outpouring has begun. Will you be a vessel?"
+      ]
     }
   ],
   "bundle": {
     "title": "4-in-1 Leadership & Personal Growth Bundle",
     "subtitle": "Build Right. Lead Strong. Finish Well.",
-    "includes": ["Mind Your Mind", "Becoming a High-Impact Leader", "Yesterday Can Kill", "The Emerging Ministers' Ministry Handbook"],
+    "includes": [
+      "Mind Your Mind",
+      "Becoming a High-Impact Leader",
+      "Yesterday Can Kill",
+      "The Emerging Ministers' Ministry Handbook"
+    ],
     "cover": "/images/books/ministry-growth-bundle.jpg",
-    "url": "https://samoyelistens.gumroad.com/l/Ministry-Growth-Bundle"
-  }
+    "url": "https://samoyelistens.gumroad.com/l/Ministry-Growth-Bundle",
+    "about": [
+      "This bundle is not for spectators. It is for men and women who are ready to take responsibility for their God-given assignment and build a ministry that honors God, serves people, and leaves a lasting legacy.",
+      "This bundle was designed to equip you for the journey."
+    ]
+  },
+  "homeFeatured": [
+    "mind-your-mind",
+    "becoming-a-power-couple",
+    "becoming-a-high-impact-leader",
+    "the-singles-compass"
+  ]
 }

@@ -8,7 +8,7 @@
     { "label": "About", "href": "#about" },
     { "label": "Ministry", "href": "#ministry" },
     { "label": "Watch", "href": "#watch" },
-    { "label": "Books", "href": "#books" },
+    { "label": "Books", "href": "/books" },
     { "label": "Events", "href": "#events" },
     { "label": "Counseling", "href": "#counseling" },
     { "label": "App", "href": "#app" }

@@ -1,36 +1,28 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useEffect, useRef } from "react";
+import { motion, useReducedMotion, useScroll, useTransform, type MotionValue } from "framer-motion";
+import { useRef } from "react";
 import { bio } from "@/lib/content";
 import { Icon } from "./ui/Icon";
 import { Reveal, RevealGroup } from "./ui/Reveal";
 import { ImagePlaceholder, PlaceholderTag } from "./ui/SectionHeading";
 
-gsap.registerPlugin(ScrollTrigger);
+/** One word of the pull-quote; brightens as scroll progress passes its slot. */
+function QuoteWord({ word, i, n, progress }: { word: string; i: number; n: number; progress: MotionValue<number> }) {
+  const opacity = useTransform(progress, [i / n, (i + 1) / n], [0.18, 1]);
+  return <motion.span style={useReducedMotion() ? undefined : { opacity }}>{word} </motion.span>;
+}
 
 export function About({ portrait: photo }: { portrait: { src: string; alt: string } }) {
   const portraitWrap = useRef<HTMLDivElement>(null);
   const quoteRef = useRef<HTMLQuoteElement>(null);
+  // Pull-quote words light up as the reader scrolls through it
+  const { scrollYProgress: quoteProgress } = useScroll({ target: quoteRef, offset: ["start 80%", "end 45%"] });
+  const quoteWords = bio.quote.text.split(" ");
   const { scrollYProgress } = useScroll({ target: portraitWrap, offset: ["start end", "end start"] });
   const y = useTransform(scrollYProgress, [0, 1], ["-8%", "8%"]);
 
-  // Pull-quote words light up as the reader scrolls through it
-  useEffect(() => {
-    const el = quoteRef.current;
-    if (!el || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const ctx = gsap.context(() => {
-      gsap.fromTo(
-        el.querySelectorAll(".q-word"),
-        { opacity: 0.18 },
-        { opacity: 1, stagger: 0.05, ease: "none", scrollTrigger: { trigger: el, start: "top 80%", end: "bottom 45%", scrub: true } },
-      );
-    }, el);
-    return () => ctx.revert();
-  }, []);
 
   return (
     <section id="about" aria-labelledby="about-title" className="relative py-24 md:py-36">
@@ -94,10 +86,8 @@ export function About({ portrait: photo }: { portrait: { src: string; alt: strin
           <figure className="relative mt-16 border-l border-gold/40 pl-8">
             <Icon name="quote" className="absolute -left-4 -top-2 h-8 w-8 bg-ink text-gold" />
             <blockquote ref={quoteRef} className="font-serif text-display-md italic leading-snug text-ivory">
-              {bio.quote.text.split(" ").map((w, i) => (
-                <span key={i} className="q-word">
-                  {w}{" "}
-                </span>
+              {quoteWords.map((w, i) => (
+                <QuoteWord key={i} word={w} i={i} n={quoteWords.length} progress={quoteProgress} />
               ))}
             </blockquote>
             <figcaption className="mt-6 flex flex-wrap items-center gap-4">

@@ -305,7 +305,7 @@ export function Counseling() {
                             <Turnstile onToken={setToken} />
 
                             {status === "error" && (
-                              <p className="rounded-xl border border-[#F4ADA6]/40 bg-[#F4ADA6]/10 px-4 py-3 text-sm text-[#F4ADA6]" role="alert">
+                              <p className="rounded-xl border border-danger/40 bg-danger/10 px-4 py-3 text-sm text-danger" role="alert">
                                 {serverError}
                               </p>
                             )}
@@ -387,7 +387,7 @@ function Field({ label, name, error, wide, hint, children }: { label: string; na
         </label>
         {hint && <span className="text-xs text-muted">{hint}</span>}
       </div>
-      <div className={error ? "[&_.field]:!border-[#F4ADA6]/70" : ""}>{children}</div>
+      <div className={error ? "[&_.field]:!border-danger/70" : ""}>{children}</div>
       {error && (
         <p className="field-error" role="alert" id={`${name}-error`}>
           {error}

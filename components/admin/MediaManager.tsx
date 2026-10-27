@@ -87,13 +87,27 @@ export function MediaManager() {
     setO((cur) => ({ ...cur, [slot]: { ...cur[slot], ...patch } }));
   const setVideo = (patch: Partial<VideoSettings>) => setO((cur) => ({ ...cur, video: { ...cur.video, ...patch } }));
 
-  const save = async () => {
+  // A finished upload is saved straight away, so a new photo or video can't be lost by forgetting Save.
+  const [autoSave, setAutoSave] = useState(0);
+  const afterUpload = <T,>(apply: (url: string) => T) => (url: string) => {
+    apply(url);
+    setAutoSave((n) => n + 1);
+  };
+  useEffect(() => {
+    if (autoSave) save(true);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [autoSave]);
+
+  const save = async (fromUpload = false) => {
     setBusy(true);
     setMsg(null);
     try {
       await api("/api/admin/media", { method: "PUT", body: o });
       setSaved(o);
-      setMsg({ tone: "success", text: "Saved — the website now shows your changes." });
+      setMsg({
+        tone: "success",
+        text: fromUpload ? "Uploaded and saved — it's live on the website now." : "Saved — the website now shows your changes.",
+      });
     } catch (err) {
       setMsg({ tone: "error", text: err instanceof Error ? err.message : "Couldn't save." });
     } finally {
@@ -108,13 +122,13 @@ export function MediaManager() {
     <>
       <PageHeader
         title="Photos & video"
-        intro="Upload new pictures and the intro video. Changes go live on the website as soon as you press Save."
+        intro="Upload new pictures and the intro video — uploads go live on the website automatically. Press Save after editing text."
         actions={
           <>
             <a href="/" target="_blank" rel="noopener" className={btnSmLine}>
               View website
             </a>
-            <button onClick={save} className={btnSmGold} disabled={!dirty || busy || !dbReady}>
+            <button onClick={() => save()} className={btnSmGold} disabled={!dirty || busy || !dbReady}>
               {busy ? <Spinner /> : <Icon name="check" className="h-4 w-4" />} Save changes
             </button>
           </>
@@ -137,6 +151,7 @@ export function MediaManager() {
           defaultAlt={defaults.heroPortrait.alt}
           disabled={!dbReady}
           onChange={(p) => setPhoto("heroPortrait", p)}
+          onUploaded={afterUpload((url) => setPhoto("heroPortrait", { src: url }))}
         />
         <PhotoSlot
           title="About section photo"
@@ -147,6 +162,7 @@ export function MediaManager() {
           defaultAlt={defaults.aboutPortrait.alt}
           disabled={!dbReady}
           onChange={(p) => setPhoto("aboutPortrait", p)}
+          onUploaded={afterUpload((url) => setPhoto("aboutPortrait", { src: url }))}
         />
       </div>
 
@@ -168,7 +184,7 @@ export function MediaManager() {
             </div>
             <p className="mt-2 break-all text-xs text-muted">{v.src || "—"}</p>
             <div className="mt-3">
-              <UploadButton kind="video" label="Upload video" disabled={!dbReady} onUploaded={(url) => setVideo({ src: url })} />
+              <UploadButton kind="video" label="Upload video" disabled={!dbReady} onUploaded={afterUpload((url) => setVideo({ src: url }))} />
               {o.video?.src && (
                 <button onClick={() => setVideo({ src: "" })} className="ml-3 text-sm text-muted underline-offset-4 hover:text-ivory hover:underline">
                   Restore default
@@ -202,7 +218,7 @@ export function MediaManager() {
               )}
             </div>
             <div className="mt-3">
-              <UploadButton kind="image" label="Upload cover" disabled={!dbReady} onUploaded={(url) => setVideo({ poster: url })} />
+              <UploadButton kind="image" label="Upload cover" disabled={!dbReady} onUploaded={afterUpload((url) => setVideo({ poster: url }))} />
             </div>
           </div>
 
@@ -211,7 +227,7 @@ export function MediaManager() {
             <p className="text-sm text-muted">Subtitles for viewers who are deaf or watching without sound.</p>
             <p className="mt-2 break-all text-xs text-muted">{v.captions || "None"}</p>
             <div className="mt-3">
-              <UploadButton kind="captions" label="Upload captions" disabled={!dbReady} onUploaded={(url) => setVideo({ captions: url })} />
+              <UploadButton kind="captions" label="Upload captions" disabled={!dbReady} onUploaded={afterUpload((url) => setVideo({ captions: url }))} />
             </div>
           </div>
 
@@ -250,8 +266,9 @@ function PhotoSlot(props: {
   defaultAlt: string;
   disabled: boolean;
   onChange: (p: { src?: string; alt?: string }) => void;
+  onUploaded: (url: string) => void;
 }) {
-  const { title, help, src, isCustom, alt, defaultAlt, disabled, onChange } = props;
+  const { title, help, src, isCustom, alt, defaultAlt, disabled, onChange, onUploaded } = props;
   return (
     <Panel className="p-6">
       <h2 className="text-2xl">{title}</h2>
@@ -265,7 +282,7 @@ function PhotoSlot(props: {
           </span>
         </div>
         <div className="space-y-4">
-          <UploadButton kind="image" label="Upload new photo" disabled={disabled} onUploaded={(url) => onChange({ src: url })} checkSize />
+          <UploadButton kind="image" label="Upload new photo" disabled={disabled} onUploaded={onUploaded} checkSize />
           {isCustom && (
             <button onClick={() => onChange({ src: "" })} className="block text-sm text-muted underline-offset-4 hover:text-ivory hover:underline">
               Restore default photo

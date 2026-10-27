@@ -48,6 +48,12 @@ export async function PUT(req: Request) {
     revalidatePath("/");
     return json({ ok: true });
   } catch (err) {
-    return serverError("media:save", err);
+    serverError("media:save", err);
+    const m = err instanceof Error ? err.message : "";
+    if (/site_settings|PGRST205|42P01|does not exist|schema cache/i.test(m))
+      return fail(502, "The database tables haven't been created yet. In Supabase, open SQL Editor, paste all of supabase/schema.sql and press Run, then try again.");
+    if (/(401|403)|Invalid API key|JWS|JWT/i.test(m))
+      return fail(502, "Supabase refused the key. In Render → Environment, set SUPABASE_SERVICE_ROLE_KEY to the service_role key (Supabase → Project Settings → API).");
+    return fail(500, "Couldn't save. Check the Render logs for the line starting [admin:media:save].");
   }
 }

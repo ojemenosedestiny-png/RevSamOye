@@ -2,16 +2,12 @@
 
 import { MotionConfig } from "framer-motion";
 import Lenis from "lenis";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useEffect, type ReactNode } from "react";
-
-gsap.registerPlugin(ScrollTrigger);
 
 /**
  * App-wide motion setup:
  *  - Framer Motion honours prefers-reduced-motion (reducedMotion="user")
- *  - Lenis smooth scroll, driven by GSAP's ticker so ScrollTrigger stays in sync
+ *  - Lenis smooth scroll (its own requestAnimationFrame loop)
  *  - In-page anchor links scroll smoothly with an offset for the sticky nav
  */
 export function Providers({ children }: { children: ReactNode }) {
@@ -22,14 +18,9 @@ export function Providers({ children }: { children: ReactNode }) {
     const navOffset = () => -(parseInt(getComputedStyle(document.documentElement).getPropertyValue("--nav-h")) || 76) + 1;
 
     let lenis: Lenis | null = null;
-    let tick: ((t: number) => void) | null = null;
 
     if (!reduce) {
-      lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9 });
-      lenis.on("scroll", ScrollTrigger.update);
-      tick = (t: number) => lenis!.raf(t * 1000);
-      gsap.ticker.add(tick);
-      gsap.ticker.lagSmoothing(0);
+      lenis = new Lenis({ lerp: 0.1, wheelMultiplier: 0.9, autoRaf: true });
       (window as unknown as { __lenis?: Lenis }).__lenis = lenis;
     }
 
@@ -53,7 +44,6 @@ export function Providers({ children }: { children: ReactNode }) {
 
     return () => {
       document.removeEventListener("click", onClick);
-      if (tick) gsap.ticker.remove(tick);
       lenis?.destroy();
     };
   }, []);
