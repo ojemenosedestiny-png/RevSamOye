@@ -107,13 +107,43 @@ export const MEDIA_BUCKET = "media";
 
 export const publicUrl = (path: string) => `${base()}/storage/v1/object/public/${MEDIA_BUCKET}/${path}`;
 
-/** Returns a one-time URL the browser can PUT a file to directly (bypasses server upload limits). */
-export async function signedUploadUrl(path: string): Promise<string> {
-  const res = await fetch(`${base()}/storage/v1/object/upload/sign/${MEDIA_BUCKET}/${path}`, {
+/** Creates the public media bucket (normally done by schema.sql); "already exists" counts as success. */
+async function ensureMediaBucket() {
+  const res = await fetch(`${base()}/storage/v1/bucket`, {
     method: "POST",
     headers: headers(),
+    body: JSON.stringify({ id: MEDIA_BUCKET, name: MEDIA_BUCKET, public: true }),
     ...noStore(),
   });
+  if (!res.ok) {
+    const text = await res.text().catch(() => "");
+    if (!/already exists|duplicate/i.test(text)) throw new Error(`Supabase create bucket failed: ${res.status} ${text}`.trim());
+  }
+}
+
+/** Returns a one-time URL the browser can PUT a file to directly (bypasses server upload limits). */
+export async function signedUploadUrl(path: string): Promise<string> {
+  const sign = () =>
+    // Storage rejects an empty body when Content-Type is JSON, so send "{}".
+    fetch(`${base()}/storage/v1/object/upload/sign/${MEDIA_BUCKET}/${path}`, { method: "POST", headers: headers(), body: "{}", ...noStore() });
+  let res = await sign();
+  // First upload on a project where schema.sql's bucket step never ran: create the bucket and retry once.
+  if (!res.ok && /bucket not found/i.test(await res.clone().text().catch(() => ""))) {
+    await ensureMediaBucket();
+    res = await sign();
+  }
   const { url } = (await (await check(res, "sign upload")).json()) as { url: string };
   return `${base()}/storage/v1${url}`;
+}
+
+/** Turns a Supabase storage failure into advice the admin can act on (no secrets included). */
+export function storageErrorHint(err: unknown): string {
+  const msg = err instanceof Error ? err.message : String(err);
+  if (/\b(401|403)\b|invalid (api key|jwt|signature)|unauthorized/i.test(msg))
+    return "Supabase refused the key. In Render → Environment, set SUPABASE_SERVICE_ROLE_KEY to the service_role key (Supabase → Project Settings → API), not the anon key.";
+  if (/bucket/i.test(msg))
+    return "The \"media\" storage bucket is missing and couldn't be created. In Supabase, open SQL Editor and run supabase/schema.sql, or create a public bucket named \"media\" under Storage.";
+  if (/fetch failed|ENOTFOUND|timeout|aborted/i.test(msg))
+    return "Couldn't reach Supabase. Check SUPABASE_URL in Render → Environment (e.g. https://yourproject.supabase.co).";
+  return "Supabase storage refused the upload request. Check the Render logs for the line starting [admin:media:sign].";
 }

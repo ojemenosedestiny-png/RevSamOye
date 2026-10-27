@@ -31,7 +31,15 @@ async function uploadFile(file: File, kind: Kind, onProgress: (p: number) => voi
     xhr.setRequestHeader("Content-Type", contentType);
     xhr.setRequestHeader("x-upsert", "false");
     xhr.upload.onprogress = (e) => e.lengthComputable && onProgress(e.loaded / e.total);
-    xhr.onload = () => (xhr.status < 300 ? resolve() : reject(new Error(`Upload failed (${xhr.status}). Please try again.`)));
+    xhr.onload = () => {
+      if (xhr.status < 300) return resolve();
+      let detail = "";
+      try {
+        detail = JSON.parse(xhr.responseText).message ?? "";
+      } catch {}
+      const tooBig = xhr.status === 413 || /exceeded the maximum|too large/i.test(detail);
+      reject(new Error(tooBig ? "The file is larger than your Supabase storage limit. Compress the video (HandBrake \"Web\" preset) or use a YouTube link." : `Upload failed (${xhr.status}${detail ? `: ${detail}` : ""}). Please try again.`));
+    };
     xhr.onerror = () => reject(new Error("Upload failed — check your internet connection."));
     xhr.send(file);
   });

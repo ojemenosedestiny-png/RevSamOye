@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { MAX_UPLOAD_MB, UPLOAD_TYPES } from "@/lib/admin-types";
-import { publicUrl, signedUploadUrl } from "@/lib/server/db";
+import { publicUrl, signedUploadUrl, storageErrorHint } from "@/lib/server/db";
 import { fail, guard, json, serverError } from "@/lib/server/admin";
 
 export const runtime = "nodejs";
@@ -36,6 +36,7 @@ export async function POST(req: Request) {
   try {
     return json({ ok: true, uploadUrl: await signedUploadUrl(path), publicUrl: publicUrl(path) });
   } catch (err) {
-    return serverError("media:sign", err);
+    serverError("media:sign", err); // logs the full Supabase error
+    return fail(502, storageErrorHint(err));
   }
 }
