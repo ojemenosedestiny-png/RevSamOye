@@ -1,0 +1,140 @@
+{
+  "_note": "Titles, subtitles and covers come from the ministry's own stores: samoyelistens.gumroad.com and samoyeglobal.org/store (checked 27 Oct 2026). Covers are saved in /public/images/books — not hotlinked. Leave \"amazon\" empty until a real Amazon listing is confirmed; the button appears automatically once a link is added.",
+  "storefronts": [
+    { "name": "Official bookstore", "url": "https://samoyeglobal.org/store" },
+    { "name": "Gumroad", "url": "https://samoyelistens.gumroad.com" },
+    { "name": "Selar", "url": "https://selar.com/m/dr-sam-oye1" }
+  ],
+  "amazonAuthorUrl": "",
+  "categories": ["Marriage & Relationships", "Singles", "Leadership & Ministry", "Personal Growth"],
+  "books": [
+    {
+      "id": "mind-your-mind",
+      "title": "Mind Your Mind",
+      "subtitle": "Guard Your Thoughts. Grow Your Mind. Govern Your World.",
+      "category": "Personal Growth",
+      "cover": "/images/books/mind-your-mind.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/Mind-Your-Mind",
+      "store": "https://samoyeglobal.org/store/mind-your-mind-1775730153907717820",
+      "amazon": "",
+      "featured": true
+    },
+    {
+      "id": "yesterday-can-kill",
+      "title": "Yesterday Can Kill",
+      "subtitle": "Release The Past. Maximize The Moment. Embrace The Future.",
+      "category": "Personal Growth",
+      "cover": "/images/books/yesterday-can-kill.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/YesterdayCanKill",
+      "store": "https://samoyeglobal.org/store/yesterday-can-kill-1775730053452734237",
+      "amazon": ""
+    },
+    {
+      "id": "overcoming-emotional-divorce",
+      "title": "Overcoming Emotional Divorce",
+      "subtitle": "How to Rebuild Emotional Connection, Restore Trust, and Revive Love in Your Marriage",
+      "category": "Marriage & Relationships",
+      "cover": "/images/books/overcoming-emotional-divorce.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/OVERCOMINGEMOTIONALDIVORCE",
+      "store": "",
+      "amazon": ""
+    },
+    {
+      "id": "becoming-a-power-couple",
+      "title": "Becoming a Power Couple",
+      "subtitle": "Celebrating Your Uniqueness. Embracing Your Differences. Maximizing Your Potentials.",
+      "category": "Marriage & Relationships",
+      "cover": "/images/books/becoming-a-power-couple.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/Become-A-Power-Couple",
+      "store": "https://samoyeglobal.org/store/become-a-power-couple-1775728370780081631",
+      "amazon": ""
+    },
+    {
+      "id": "breaking-negative-relationship-patterns",
+      "title": "Breaking Negative Relationship Patterns",
+      "subtitle": "A practical, spiritually grounded guide to the repeated behaviours that quietly damage relationships and marriages.",
+      "category": "Marriage & Relationships",
+      "cover": "/images/books/breaking-negative-relationship-patterns.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/BREAKING-NEGATIVE-RELATIONSHIP-PATTERNS",
+      "store": "https://samoyeglobal.org/store/breaking-negative-relationship-patterns-1775729039731702193",
+      "amazon": ""
+    },
+    {
+      "id": "the-singles-checklist",
+      "title": "The Singles Checklist",
+      "subtitle": "10 Things You Must Check Before You Say I DO",
+      "category": "Singles",
+      "cover": "/images/books/the-singles-checklist.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/THE-SINGLES-CHECKLIST",
+      "store": "https://samoyeglobal.org/store/the-singles-checklist-90-1775729612264044517",
+      "amazon": ""
+    },
+    {
+      "id": "the-singles-compass",
+      "title": "The Singles' Compass",
+      "subtitle": "31 Days to Navigating Your Path to a Godly Marriage",
+      "category": "Singles",
+      "cover": "/images/books/the-singles-compass.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/THE-SINGLES-COMPASS",
+      "store": "https://samoyeglobal.org/store/the-singles-compass-1775729711122795554",
+      "amazon": ""
+    },
+    {
+      "id": "the-teens-guide",
+      "title": "The Teen's Guide",
+      "subtitle": "31 Days to Identity, Intimacy with God, and Influence",
+      "category": "Personal Growth",
+      "cover": "/images/books/the-teens-guide.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/The-Teens-Guide",
+      "store": "https://samoyeglobal.org/store/the-teen39s-guide-1775729344520343004",
+      "amazon": ""
+    },
+    {
+      "id": "just-different",
+      "title": "Just Different!",
+      "subtitle": "Understanding, Accepting, and Maximizing Your Difference",
+      "category": "Personal Growth",
+      "cover": "/images/books/just-different.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/JUST-DIFFERENT",
+      "store": "",
+      "amazon": ""
+    },
+    {
+      "id": "becoming-a-high-impact-leader",
+      "title": "Becoming a High-Impact Leader",
+      "subtitle": "21 Indispensable Principles for Increasing Your Impact and Influence in the 21st Century",
+      "category": "Leadership & Ministry",
+      "cover": "/images/books/becoming-a-high-impact-leader.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/BECOMING-A-HIGH-IMPACT-LEADER",
+      "store": "https://samoyeglobal.org/store/becoming-a-high-impact-leader-1775728603954527417",
+      "amazon": ""
+    },
+    {
+      "id": "emerging-ministers-handbook",
+      "title": "The Emerging Ministers' Ministry Handbook",
+      "subtitle": "It's your season to emerge — a handbook for those called to ministry.",
+      "category": "Leadership & Ministry",
+      "cover": "/images/books/emerging-ministers-handbook.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/MINISTRY-HANDBOOK",
+      "store": "https://samoyeglobal.org/store/the-emerging-ministers-ministry-handbook-1775728095770070334",
+      "amazon": ""
+    },
+    {
+      "id": "the-outpouring",
+      "title": "The Outpouring",
+      "subtitle": "On the global move of the Holy Spirit stirring across the nations in this generation.",
+      "category": "Leadership & Ministry",
+      "cover": "/images/books/the-outpouring.jpg",
+      "gumroad": "https://samoyelistens.gumroad.com/l/The-Outpouring",
+      "store": "https://samoyeglobal.org/store/the-outpouring-1775728826537330937",
+      "amazon": ""
+    }
+  ],
+  "bundle": {
+    "title": "4-in-1 Leadership & Personal Growth Bundle",
+    "subtitle": "Build Right. Lead Strong. Finish Well.",
+    "includes": ["Mind Your Mind", "Becoming a High-Impact Leader", "Yesterday Can Kill", "The Emerging Ministers' Ministry Handbook"],
+    "cover": "/images/books/ministry-growth-bundle.jpg",
+    "url": "https://samoyelistens.gumroad.com/l/Ministry-Growth-Bundle"
+  }
+}

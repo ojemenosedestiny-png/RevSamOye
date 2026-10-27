@@ -1,4 +1,4 @@
-import { bio, site, siteUrl, type EventItem } from "@/lib/content";
+import { bio, books, site, siteUrl, type EventItem } from "@/lib/content";
 
 /** Structured data: Person, Organization (church) and upcoming Events. */
 export function JsonLd({ events }: { events: EventItem[] }) {
@@ -20,9 +20,21 @@ export function JsonLd({ events }: { events: EventItem[] }) {
       image: `${siteUrl}${bio.heroPortrait.src}`,
       url: siteUrl,
       description: site.description,
-      award: "Outstanding Pastor of the Year, CLIMA Africa Awards 2024",
+      birthDate: "1974-04-13",
+      birthPlace: { "@type": "Place", name: "Kaduna, Nigeria" },
+      alumniOf: { "@type": "CollegeOrUniversity", name: "University of Ibadan" },
+      spouse: { "@type": "Person", name: bio.biography.family.spouse },
+      award: bio.biography.awards.map((a) => `${a.title}, ${a.by}${a.year ? ` (${a.year})` : ""}`),
       sameAs,
     },
+    ...books.books.map((b) => ({
+      "@type": "Book",
+      name: b.title,
+      author: { "@id": `${siteUrl}/#person` },
+      image: `${siteUrl}${b.cover}`,
+      bookFormat: "https://schema.org/EBook",
+      url: b.gumroad,
+    })),
     { ...church, founder: { "@id": `${siteUrl}/#person` }, url: siteUrl },
     ...events
       .filter((e) => !e.placeholder)

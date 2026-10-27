@@ -86,6 +86,11 @@ export function About({ portrait: photo }: { portrait: { src: string; alt: strin
             ))}
           </RevealGroup>
 
+          <a href="#biography" className="mt-8 inline-flex items-center gap-2 font-semibold text-gold hover:text-gold-bright">
+            Read the full biography
+            <Icon name="arrowDown" className="h-4 w-4" />
+          </a>
+
           <figure className="relative mt-16 border-l border-gold/40 pl-8">
             <Icon name="quote" className="absolute -left-4 -top-2 h-8 w-8 bg-ink text-gold" />
             <blockquote ref={quoteRef} className="font-serif text-display-md italic leading-snug text-ivory">

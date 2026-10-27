@@ -5,6 +5,7 @@ import stats from "@/data/stats.json";
 import eventsFile from "@/data/events.json";
 import video from "@/data/video.json";
 import testimonies from "@/data/testimonies.json";
+import books from "@/data/books.json";
 
 export type SiteData = typeof site;
 export type BioData = typeof bio;
@@ -12,6 +13,7 @@ export type MinistryArm = (typeof ministry.arms)[number];
 export type StatsData = typeof stats;
 export type VideoData = typeof video;
 export type TestimoniesData = typeof testimonies;
+export type Book = (typeof books.books)[number];
 
 export type EventItem = {
   id: string;
@@ -27,7 +29,10 @@ export type EventItem = {
   placeholder?: boolean;
 };
 
-export const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/$/, "");
+// Canonical address for SEO links, sitemap and structured data. Override with NEXT_PUBLIC_SITE_URL.
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL || (process.env.NODE_ENV === "production" ? "https://revsamoye.com" : "http://localhost:3000")
+).replace(/\/$/, "");
 
 export const events = eventsFile.events as EventItem[];
 
@@ -38,4 +43,4 @@ export function upcomingEvents(list: EventItem[] = events, now: Date = new Date(
     .sort((a, b) => new Date(a.start).getTime() - new Date(b.start).getTime());
 }
 
-export { site, bio, ministry, stats, video, testimonies };
+export { site, bio, ministry, stats, video, testimonies, books };

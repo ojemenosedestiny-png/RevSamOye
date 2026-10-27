@@ -1,5 +1,7 @@
 import { About } from "@/components/About";
 import { AppDownload } from "@/components/AppDownload";
+import { Biography } from "@/components/Biography";
+import { Books } from "@/components/Books";
 import { Counseling } from "@/components/Counseling";
 import { Events } from "@/components/Events";
 import { Footer } from "@/components/Footer";
@@ -25,9 +27,11 @@ export default async function Home() {
       <main id="main">
         <Hero portrait={media.heroPortrait} />
         <About portrait={media.aboutPortrait} />
+        <Biography />
         <MinistryArms />
         <ImpactStats />
         <Watch video={media.video} />
+        <Books />
         <Events initial={events} />
         <Counseling />
         <AppDownload />

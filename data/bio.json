@@ -26,6 +26,64 @@
     "Honoured as Outstanding Pastor of the Year, CLIMA Africa Awards 2024",
     "Known for teachings on leadership, relationships, marriage, faith and purpose"
   ],
+  "biography": {
+    "_note": "Supplied by the ministry team (Oct 2026), based on the Wikipedia biography and its cited sources. Confirm dates and award titles before launch.",
+    "intro": "Born Samuel Oye on 13 April 1974 in Kaduna, Kaduna State, to Simeon Adisa and Florence Mopelola Shoroye, he hails from Abeokuta, Ogun State, and grew up in Bauchi State.",
+    "chapters": [
+      {
+        "title": "Early life & education",
+        "text": "He attended Government Day Secondary School, Bauchi (1985–1988), Government Science Secondary School, Azare (1989–1991) and Wasimi Community High School, Maryland, Lagos, and went on to earn a bachelor's degree in Geology from the University of Ibadan. He worked as a secretary with Bantale & Co Ltd, Lagos, before entering full-time ministry."
+      },
+      {
+        "title": "A calling from the classroom",
+        "text": "His ministry began in student fellowships — as assistant leader of the Fellowship of Christian Students in Azare (1989), assistant to the president of the Deeper Life School Outreach at Wasimi (1994) and District Student Leader for the Deeper Life Bible Church, Onigbongbo District, Lagos. He later served as Youth Pastor at Goodnews Miracle Bible Church, Alasia, and as president of Dominion Youth Ministry (Dominion Team) in Lagos."
+      },
+      {
+        "title": "The Transforming Church",
+        "text": "In 2000 he founded the Springtime Christian Center in Lagos. After relocating to Abuja in 2002 it became Harvest House International Church, and later The Transforming Church Worldwide, which has branches across Nigeria and in the United Kingdom."
+      },
+      {
+        "title": "Prophetic Prayer Hour",
+        "text": "At the start of the COVID-19 pandemic he began an online prayer session that grew into the Prophetic Prayer Hour (PPH), streamed daily on YouTube and social media with participants from over 110 countries. He has since hosted Prophetic Prayer conferences in Nigeria, the United Kingdom, Canada, the United States and Trinidad and Tobago."
+      },
+      {
+        "title": "On the global stage",
+        "text": "He has been a guest on the Christian Broadcasting Network (CBN), TBN Africa, TBN Salsa (USA), TBN's Praise the Lord, Daystar Television and Channels TV."
+      }
+    ],
+    "timeline": [
+      { "year": "1974", "text": "Born in Kaduna, Kaduna State" },
+      { "year": "1989", "text": "Assistant leader, Fellowship of Christian Students, Azare" },
+      { "year": "2000", "text": "Founds Springtime Christian Center, Lagos" },
+      { "year": "2002", "text": "Relocates to Abuja — the church becomes The Transforming Church" },
+      { "year": "2020", "text": "Prophetic Prayer Hour begins online" },
+      { "year": "2023", "text": "Honorary Doctorate, Queen's University Belfast" },
+      { "year": "2025", "text": "National Christian Leadership Award, Abuja" }
+    ],
+    "family": {
+      "title": "Family",
+      "spouse": "Pastor Mary Sam Oye",
+      "text": "Rev. Dr. Sam Oye is married to Pastor Mary Sam Oye, his partner in life and ministry. They are blessed with two children.",
+      "photo": {
+        "src": "/images/pastor-and-wife.jpg",
+        "alt": "Rev. Dr. Sam Oye in a navy suit and striped tie with his wife, Pastor Mary Sam Oye, in a black embellished dress, smiling arm in arm",
+        "width": 1400,
+        "height": 1400
+      }
+    },
+    "awards": [
+      { "title": "Outstanding Pastor of the Year", "by": "CLIMA Africa Awards", "year": "2024" },
+      { "title": "Honorary Doctorate (Doctor of Philosophy)", "by": "Queen's University Belfast, UK", "year": "Nov 2023" },
+      { "title": "National Christian Leadership Award", "by": "Abuja, Nigeria", "year": "Jul 2025" },
+      { "title": "Certified Global Expert in Leadership and Administrative Management", "by": "United World Congress of Diplomats with the International Institute of Experts on Political Economy and Administration (IIEPEA)", "year": "Aug 2025" },
+      { "title": "Distinguished Fellow", "by": "International Institute of Experts on Political Economy and Administration (IIEPEA)", "year": "" },
+      { "title": "Honorary Citizen of Pensacola", "by": "Mayor of Pensacola, Florida, USA", "year": "Mar 2010" },
+      { "title": "Leadership Achievement Award", "by": "Dorben Polytechnic, Abuja", "year": "" },
+      { "title": "Honorary Fellowship Award", "by": "Nigerian Christian Fellowship", "year": "" },
+      { "title": "Excellence and Merit Awards", "by": "Christian Lawyers Fellowship of Nigeria", "year": "" }
+    ],
+    "earlierTitles": ["The Emerging Leader", "The Prayer Switch", "The Limit Breaker", "Crack It"]
+  },
   "quote": {
     "text": "An approved quote from Rev. Dr. Sam Oye will appear here — a single line that captures the heart of the ministry.",
     "attribution": "Rev. Dr. Sam Oye",

@@ -29,6 +29,8 @@ All text lives in `/data`. Edit the JSON, save, and redeploy.
 | File | What it controls |
 | --- | --- |
 | `site.json` | Name, navigation, social links, contact details, app links and copy, newsletter text |
+| `bio.json` (biography) | Full biography: chapters, milestones, family, honours |
+| `books.json` | Books section: titles, covers, Gumroad / official-store / Amazon links. Add an `amazon` link to a book and its Amazon button appears |
 | `bio.json` | About section: paragraphs, highlights, quote, portraits |
 | `ministry.json` | Ministry cards: title, 2-line description, icon, link |
 | `stats.json` | Impact counters. Set `"placeholder": false` once the figures are confirmed |
@@ -152,13 +154,13 @@ The repo includes a `render.yaml` blueprint.
    2. Open **SQL Editor** and run all of `supabase/schema.sql`. This creates the tables and the `media` storage bucket.
    3. Copy the **Project URL** and the **service_role key** from Project Settings → API.
 2. **Create the service on Render:** in the dashboard, choose **New → Blueprint** and connect this GitHub repo. Render reads `render.yaml` and asks for the secret values:
-   - `NEXT_PUBLIC_SITE_URL`: the site address, e.g. `https://rev-sam-oye.onrender.com` (later, your own domain).
+   - `NEXT_PUBLIC_SITE_URL`: the site address, `https://revsamoye.com`.
    - `ADMIN_PASSWORD`: a long, unique password.
    - `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY`.
    - `RESEND_API_KEY` and `EMAIL_FROM` to send booking emails. You can skip these at first.
    - Leave the Turnstile keys blank unless you set it up.
 3. **Deploy:** click **Apply**. The first build takes about 3–5 minutes. After that, every push to GitHub redeploys automatically.
-4. **Add your domain:** under Settings → Custom Domains, add your domain (e.g. `www.samoyeglobal.org`), add the DNS records Render shows, then update `NEXT_PUBLIC_SITE_URL`.
+4. **Add your domain:** under Settings → Custom Domains, add `revsamoye.com` and `www.revsamoye.com`, add the DNS records Render shows at your domain registrar, and make sure `NEXT_PUBLIC_SITE_URL` is `https://revsamoye.com`. Render issues the HTTPS certificate automatically.
 
 The blueprint uses the **Starter** plan. The free plan works, but it sleeps after 15 minutes without visitors, so the next visitor waits around 30–60 seconds for the site to wake up.
 
