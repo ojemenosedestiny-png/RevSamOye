@@ -3,18 +3,46 @@ import "server-only";
 // Minimal Supabase REST + Storage client — no SDK needed. Tables live in supabase/schema.sql.
 // Uses the service-role key, so this must only ever run on the server.
 
-export const dbConfigured = () => Boolean(process.env.SUPABASE_URL && process.env.SUPABASE_SERVICE_ROLE_KEY);
+/**
+ * Accepts SUPABASE_URL as the full URL, a URL without https://, a pasted API URL
+ * (".../rest/v1"), or just the 20-character project ref. Returns null if unusable.
+ */
+function supabaseOrigin(): string | null {
+  let raw = (process.env.SUPABASE_URL ?? "").trim();
+  if (!raw) return null;
+  if (/^[a-z0-9]{20}$/i.test(raw)) raw = `https://${raw}.supabase.co`;
+  else if (!/^https?:\/\//i.test(raw)) raw = `https://${raw}`;
+  try {
+    return new URL(raw).origin;
+  } catch {
+    return null;
+  }
+}
 
-const base = () => process.env.SUPABASE_URL!.replace(/\/$/, "");
+let warned = false;
+export const dbConfigured = () => {
+  const ok = Boolean(supabaseOrigin() && process.env.SUPABASE_SERVICE_ROLE_KEY?.trim());
+  if (!ok && process.env.SUPABASE_URL && !warned) {
+    warned = true;
+    console.warn("[db] SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY is invalid — expected e.g. https://abcd1234.supabase.co");
+  }
+  return ok;
+};
+
+const base = () => supabaseOrigin()!;
 const headers = (extra: Record<string, string> = {}) => {
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY!.trim();
   return { apikey: key, Authorization: `Bearer ${key}`, "Content-Type": "application/json", ...extra };
 };
 
 type FetchOpts = { tags?: string[] };
 // Public pages pass tags so results are cached and refreshed on admin save; admin reads are always fresh.
-const cacheOpts = (o?: FetchOpts): RequestInit =>
-  o?.tags ? { next: { revalidate: 3600, tags: o.tags } } : { cache: "no-store" };
+// Every call times out so a slow or misconfigured database can't stall a page or a build.
+const cacheOpts = (o?: FetchOpts): RequestInit => ({
+  signal: AbortSignal.timeout(15_000),
+  ...(o?.tags ? { next: { revalidate: 3600, tags: o.tags } } : { cache: "no-store" }),
+});
+const noStore = (): RequestInit => ({ cache: "no-store", signal: AbortSignal.timeout(15_000) });
 
 async function check(res: Response, what: string) {
   if (!res.ok) throw new Error(`Supabase ${what} failed: ${res.status} ${await res.text().catch(() => "")}`.trim());
@@ -31,7 +59,7 @@ export async function countRows(table: string, filter = ""): Promise<number> {
   const res = await fetch(`${base()}/rest/v1/${table}?select=id${filter ? `&${filter}` : ""}`, {
     method: "HEAD",
     headers: headers({ Prefer: "count=exact", Range: "0-0" }),
-    cache: "no-store",
+    ...noStore(),
   });
   await check(res, `count ${table}`);
   return Number(res.headers.get("content-range")?.split("/")[1] ?? 0);
@@ -42,7 +70,7 @@ export async function insertRow(table: string, row: Record<string, unknown>, opt
     method: "POST",
     headers: headers({ Prefer: opts.ignoreDuplicates ? "return=minimal,resolution=ignore-duplicates" : "return=minimal" }),
     body: JSON.stringify(row),
-    cache: "no-store",
+    ...noStore(),
   });
   await check(res, `insert ${table}`);
 }
@@ -52,7 +80,7 @@ export async function upsertRow(table: string, row: Record<string, unknown>) {
     method: "POST",
     headers: headers({ Prefer: "return=minimal,resolution=merge-duplicates" }),
     body: JSON.stringify(row),
-    cache: "no-store",
+    ...noStore(),
   });
   await check(res, `upsert ${table}`);
 }
@@ -63,13 +91,13 @@ export async function updateRows(table: string, filter: string, patch: Record<st
     method: "PATCH",
     headers: headers({ Prefer: "return=minimal" }),
     body: JSON.stringify(patch),
-    cache: "no-store",
+    ...noStore(),
   });
   await check(res, `update ${table}`);
 }
 
 export async function deleteRows(table: string, filter: string) {
-  const res = await fetch(`${base()}/rest/v1/${table}?${filter}`, { method: "DELETE", headers: headers(), cache: "no-store" });
+  const res = await fetch(`${base()}/rest/v1/${table}?${filter}`, { method: "DELETE", headers: headers(), ...noStore() });
   await check(res, `delete ${table}`);
 }
 
@@ -84,7 +112,7 @@ export async function signedUploadUrl(path: string): Promise<string> {
   const res = await fetch(`${base()}/storage/v1/object/upload/sign/${MEDIA_BUCKET}/${path}`, {
     method: "POST",
     headers: headers(),
-    cache: "no-store",
+    ...noStore(),
   });
   const { url } = (await (await check(res, "sign upload")).json()) as { url: string };
   return `${base()}/storage/v1${url}`;
