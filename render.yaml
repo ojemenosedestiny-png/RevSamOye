@@ -1,0 +1,38 @@
+# Render Blueprint — New → Blueprint → connect this repo. Render will ask for the values marked sync: false.
+services:
+  - type: web
+    name: rev-sam-oye
+    runtime: node
+    plan: starter # the free plan sleeps after 15 minutes idle, making the first visit slow
+    region: frankfurt # closest Render region to Nigeria
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: "22"
+      - key: NEXT_TELEMETRY_DISABLED
+        value: "1"
+      - key: NEXT_PUBLIC_SITE_URL
+        sync: false
+      - key: ADMIN_PASSWORD
+        sync: false
+      - key: ADMIN_SESSION_SECRET
+        generateValue: true
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: NEXT_PUBLIC_MAX_UPLOAD_MB
+        value: "50"
+      - key: RESEND_API_KEY
+        sync: false
+      - key: EMAIL_FROM
+        sync: false
+      - key: MINISTRY_EMAIL
+        value: hello@samoyeglobal.org
+      - key: NEXT_PUBLIC_TURNSTILE_SITE_KEY
+        sync: false
+      - key: TURNSTILE_SECRET_KEY
+        sync: false

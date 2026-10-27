@@ -1,0 +1,10 @@
+{
+  "_note": "PLACEHOLDER NUMBERS — replace with figures confirmed by the ministry, then set placeholder to false.",
+  "placeholder": true,
+  "items": [
+    { "label": "Days of Prophetic Prayer Hour", "value": 1000, "suffix": "+" },
+    { "label": "Nations reached online", "value": 50, "suffix": "+" },
+    { "label": "Lives impacted", "value": 100000, "suffix": "+" },
+    { "label": "Messages & teachings", "value": 5000, "suffix": "+" }
+  ]
+}

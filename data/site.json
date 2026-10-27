@@ -1,0 +1,39 @@
+{
+  "_note": "Site-wide settings. Anything marked placeholder must be confirmed by the ministry before launch.",
+  "name": "Rev. Dr. Sam Oye",
+  "shortName": "Sam Oye",
+  "description": "Rev. Dr. Sam Oye is the Founder & Lead Pastor of The Transforming Church, Abuja, and Convener of Prophetic Prayer Hour — teaching on leadership, relationships, marriage, faith and purpose.",
+  "tagline": "Raising transformed lives for global impact.",
+  "nav": [
+    { "label": "About", "href": "#about" },
+    { "label": "Ministry", "href": "#ministry" },
+    { "label": "Watch", "href": "#watch" },
+    { "label": "Events", "href": "#events" },
+    { "label": "Counseling", "href": "#counseling" },
+    { "label": "App", "href": "#app" }
+  ],
+  "socials": [
+    { "name": "YouTube", "icon": "youtube", "url": "https://www.youtube.com/@RevSamOye", "_verify": "Handle seen on Google results — confirm" },
+    { "name": "Instagram", "icon": "instagram", "url": "https://www.instagram.com/revsamoye", "_verify": "Handle seen on Google results — confirm" },
+    { "name": "Facebook", "icon": "facebook", "url": "#", "placeholder": true },
+    { "name": "X", "icon": "x", "url": "#", "placeholder": true }
+  ],
+  "contact": {
+    "email": "hello@samoyeglobal.org",
+    "phone": "+234 805 524 0701",
+    "address": "The Transforming Church, Abuja, FCT, Nigeria — full street address to be confirmed",
+    "placeholderFields": ["address"]
+  },
+  "app": {
+    "name": "Sam Oye Global",
+    "headline": "Sam Oye Global — The Growth Empire",
+    "copy": "Teachings, podcasts, live events, masterclasses, personal sessions and community — together in one app.",
+    "features": ["Teachings", "Podcasts", "Live events", "Masterclasses", "Personal sessions", "Community"],
+    "appStore": "https://apps.apple.com/ng/app/sam-oye-global/id6764504793",
+    "googlePlay": "https://play.google.com/store/apps/details?id=com.samoyeglobal.app"
+  },
+  "newsletter": {
+    "title": "Get messages and event updates",
+    "copy": "New teachings, live sessions and event announcements, straight to your inbox. No spam — unsubscribe any time."
+  }
+}

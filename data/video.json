@@ -1,0 +1,11 @@
+{
+  "_note": "Place the MP4 at /public/videos/intro.mp4 (H.264, ideally under 15 MB). poster and captions are optional. youtubeUrl is used if the MP4 is missing or preferYouTube is true.",
+  "eyebrow": "Watch",
+  "title": "A word for this season",
+  "description": "A short message from Rev. Dr. Sam Oye. Press play to watch with sound.",
+  "src": "/videos/intro.mp4",
+  "poster": "/images/pastor-ministering.jpg",
+  "captions": "/videos/intro.en.vtt",
+  "youtubeUrl": "",
+  "preferYouTube": false
+}

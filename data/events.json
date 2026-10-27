@@ -1,0 +1,43 @@
+{
+  "_note": "Add or edit events here. Times are ISO 8601 with offset (+01:00 = West Africa Time). Events disappear automatically once 'end' has passed. Set placeholder to false once confirmed.",
+  "events": [
+    {
+      "id": "the-encounter-2026",
+      "title": "The Encounter 2026",
+      "start": "2026-11-28T17:00:00+01:00",
+      "end": "2026-11-28T21:00:00+01:00",
+      "venue": "Venue to be confirmed, Abuja",
+      "online": true,
+      "onlineLabel": "Also streaming live online",
+      "description": "An evening of worship, the Word and prayer. Confirm date, time and venue before publishing.",
+      "speakers": ["Rev. Dr. Sam Oye"],
+      "registerUrl": "#",
+      "placeholder": true
+    },
+    {
+      "id": "leadership-masterclass",
+      "title": "Leadership Masterclass",
+      "start": "2026-12-12T10:00:00+01:00",
+      "end": "2026-12-12T13:00:00+01:00",
+      "venue": "",
+      "online": true,
+      "onlineLabel": "Online — Sam Oye Global app",
+      "description": "Placeholder event. Practical teaching on leading with faith, character and vision.",
+      "speakers": ["Rev. Dr. Sam Oye"],
+      "registerUrl": "#",
+      "placeholder": true
+    },
+    {
+      "id": "marriage-and-relationships-conference",
+      "title": "Marriage & Relationships Conference",
+      "start": "2027-02-13T16:00:00+01:00",
+      "end": "2027-02-13T20:00:00+01:00",
+      "venue": "The Transforming Church, Abuja",
+      "online": false,
+      "description": "Placeholder event. Wisdom for singles, couples and families building lasting relationships.",
+      "speakers": ["Rev. Dr. Sam Oye", "Guest speaker (TBC)"],
+      "registerUrl": "#",
+      "placeholder": true
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "_note": "Replace each href with the real destination. icon must be one of: church, prayer, mic, compass, book.",
+  "arms": [
+    {
+      "id": "ttc",
+      "title": "The Transforming Church",
+      "description": "A Christ-centred church family in Abuja, committed to raising transformed lives for global impact.",
+      "icon": "church",
+      "href": "#",
+      "featured": true
+    },
+    {
+      "id": "pph",
+      "title": "Prophetic Prayer Hour",
+      "description": "An online prayer platform where a global audience gathers to pray, believe and receive.",
+      "icon": "prayer",
+      "href": "#"
+    },
+    {
+      "id": "podcast",
+      "title": "Sam Oye Podcast",
+      "description": "A weekly podcast with teaching on faith, leadership, relationships and purpose.",
+      "icon": "mic",
+      "href": "#"
+    },
+    {
+      "id": "coaching",
+      "title": "Leadership & Relationship Coaching",
+      "description": "Guidance for leaders, couples and individuals seeking clarity, growth and healthy relationships.",
+      "icon": "compass",
+      "href": "#counseling"
+    },
+    {
+      "id": "books",
+      "title": "Books & Teachings",
+      "description": "Messages and resources that help you live with faith, wisdom and purpose every day.",
+      "icon": "book",
+      "href": "#"
+    }
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "_note": "Verify all wording with the ministry before launch. Sources: ThisDay (CLIMA Africa Awards 2024), Sam Oye Podcast (Audible), Sam Oye Global (App Store).",
+  "name": "Rev. Dr. Sam Oye",
+  "signature": "Sam Oye",
+  "role": "Founder & Lead Pastor, The Transforming Church",
+  "location": "Abuja, Nigeria",
+  "heroPortrait": {
+    "src": "/images/pastor-portrait.jpg",
+    "alt": "Rev. Dr. Sam Oye in a tailored brown suit and glasses, arms folded, against a soft rose backdrop",
+    "width": 1335,
+    "height": 1347
+  },
+  "aboutPortrait": {
+    "src": "/images/pastor-ministering.jpg",
+    "alt": "Rev. Dr. Sam Oye preaching on stage, microphone in hand, in a dark suit and blue patterned tie",
+    "replaceWith": "/images/pastor-about.jpg"
+  },
+  "paragraphs": [
+    "Rev. Dr. Sam Oye is the Founder and Lead Pastor of The Transforming Church (TTC) in Abuja, Nigeria, and the Convener of Prophetic Prayer Hour (PPH) — an online prayer platform that gathers a global audience.",
+    "He is widely known for practical, faith-filled teaching on leadership, relationships, marriage, faith and purpose, shared from the pulpit, online and through the weekly Sam Oye Podcast."
+  ],
+  "highlights": [
+    "Founder & Lead Pastor, The Transforming Church, Abuja",
+    "Convener of Prophetic Prayer Hour (PPH), an online prayer platform with a global audience",
+    "Host of the weekly Sam Oye Podcast",
+    "Honoured as Outstanding Pastor of the Year, CLIMA Africa Awards 2024",
+    "Known for teachings on leadership, relationships, marriage, faith and purpose"
+  ],
+  "quote": {
+    "text": "An approved quote from Rev. Dr. Sam Oye will appear here — a single line that captures the heart of the ministry.",
+    "attribution": "Rev. Dr. Sam Oye",
+    "placeholder": true
+  }
+}
