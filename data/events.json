@@ -4,12 +4,12 @@
     {
       "id": "the-encounter-2026",
       "title": "The Encounter 2026",
-      "start": "2026-11-28T17:00:00+01:00",
-      "end": "2026-11-28T21:00:00+01:00",
+      "start": "2026-11-06T17:00:00+01:00",
+      "end": "2026-11-06T21:00:00+01:00",
       "venue": "Venue to be confirmed, Abuja",
       "online": true,
       "onlineLabel": "Also streaming live online",
-      "description": "An evening of worship, the Word and prayer. Confirm date, time and venue before publishing.",
+      "description": "An evening of worship, the Word and prayer. Date confirmed (6 November 2026); confirm time and venue before publishing.",
       "speakers": ["Rev. Dr. Sam Oye"],
       "registerUrl": "#",
       "placeholder": true
