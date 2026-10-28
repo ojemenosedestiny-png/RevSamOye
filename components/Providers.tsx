@@ -12,6 +12,8 @@ import { useEffect, type ReactNode } from "react";
  */
 export function Providers({ children }: { children: ReactNode }) {
   useEffect(() => {
+    // Scripts are running, so the CSS fallback for scroll reveals is no longer needed
+    document.documentElement.classList.add("hydrated");
     // The admin panel uses native scrolling
     if (window.location.pathname.startsWith("/admin")) return;
     const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

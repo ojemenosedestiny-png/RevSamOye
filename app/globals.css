@@ -107,6 +107,13 @@ html.lenis, html.lenis body { height: auto; }
   .kinetic-underline { animation: none; stroke-dashoffset: 0; }
 }
 
+/*
+ * Scroll reveals start hidden in the server HTML. If the scripts are slow or fail
+ * (weak mobile data, old phones, in-app browsers), the boot script adds
+ * .reveal-fallback after a few seconds so nothing stays invisible.
+ */
+html.reveal-fallback [data-reveal] { opacity: 1 !important; transform: none !important; filter: none !important; }
+
 /* Gold particles read as specks of dust on the light background; the observer pauses them while hidden */
 :root[data-theme="light"] .hero-particles { display: none; }
 

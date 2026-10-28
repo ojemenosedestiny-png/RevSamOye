@@ -42,13 +42,16 @@ export const viewport: Viewport = {
 
 // Runs before first paint: flags JS (animated text can start hidden without being lost when
 // scripts are off) and applies the saved theme, else the device setting. Admin stays dark.
-const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');var t='dark';try{var s=localStorage.getItem('theme');t=s==='light'||s==='dark'?s:matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}catch(e){}if(location.pathname.indexOf('/admin')===0)t='dark';d.dataset.theme=t;if(t==='light'){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content','#FAF7F0');}})()`;
+const bootScript = `(function(){var d=document.documentElement;d.classList.add('js');var t='dark';try{var s=localStorage.getItem('theme');t=s==='light'||s==='dark'?s:matchMedia('(prefers-color-scheme: light)').matches?'light':'dark';}catch(e){}if(location.pathname.indexOf('/admin')===0)t='dark';d.dataset.theme=t;if(t==='light'){var m=document.querySelector('meta[name="theme-color"]');if(m)m.setAttribute('content','#FAF7F0');}setTimeout(function(){if(!d.classList.contains('hydrated'))d.classList.add('reveal-fallback');},3000);})()`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${serif.variable} ${sans.variable} ${script.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: bootScript }} />
+        <noscript>
+          <style>{"[data-reveal]{opacity:1!important;transform:none!important;filter:none!important}"}</style>
+        </noscript>
       </head>
       <body>
         <a href="#main" className="sr-only z-[100] rounded-full bg-gold px-5 py-3 font-semibold text-on-gold focus:not-sr-only focus:fixed focus:left-4 focus:top-4">

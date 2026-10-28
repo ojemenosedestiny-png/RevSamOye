@@ -55,6 +55,7 @@ export function Testimonies() {
               <AnimatePresence mode="wait">
                 <motion.figure
                   key={i}
+                  data-reveal=""
                   initial={{ opacity: 0, y: 20, filter: "blur(6px)" }}
                   animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
                   exit={{ opacity: 0, y: -20, filter: "blur(6px)" }}
